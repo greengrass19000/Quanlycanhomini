@@ -1,6 +1,6 @@
 CREATE TABLE `Room` (
 	`roomNo` INT(3) NOT NULL,
-	`buildingID` INT(8) NOT NULL AUTO_INCREMENT,
+	`buildingID` INT(8) NOT NULL,
 	`floor` INT(2) NOT NULL,
 	`rentalPrice` INT(8) NOT NULL,
 	`description` TEXT NOT NULL,
