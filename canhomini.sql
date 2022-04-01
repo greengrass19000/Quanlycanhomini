@@ -1,10 +1,10 @@
 CREATE TABLE `Room` (
 	`roomNo` INT(3) NOT NULL,
-	`buildingID` INT(8) NOT NULL,
+	`buildingID` INT(8) NOT NULL AUTO_INCREMENT,
 	`floor` INT(2) NOT NULL,
 	`rentalPrice` INT(8) NOT NULL,
 	`description` TEXT NOT NULL,
-	`image` blob NOT NULL,
+	`image` blob,
 	`hostID` BINARY NOT NULL,
 	`ExpectedNumber` BINARY NOT NULL,
 	`utilities` TEXT NOT NULL,
@@ -56,13 +56,13 @@ CREATE TABLE `Building` (
 
 CREATE TABLE `Account` (
 	`accountID` INT(8) NOT NULL AUTO_INCREMENT,
-	`accountType` TEXT NOT NULL,
+	`accountType` varchar(10) NOT NULL,
 	`username` varchar(20) NOT NULL UNIQUE,
 	`password` varchar(20) NOT NULL,
-	`phone` varchar(10) NOT NULL,
-	`email` varchar(30),
 	`firstName` varchar(8) NOT NULL,
 	`lastName` varchar(8) NOT NULL,
+	`phone` varchar(10) NOT NULL,
+	`email` varchar(30),
 	PRIMARY KEY (`accountID`)
 );
 
@@ -79,7 +79,6 @@ ALTER TABLE `Invoice` ADD CONSTRAINT `Invoice_fk0` FOREIGN KEY (`roomNo`) REFERE
 ALTER TABLE `Host` ADD CONSTRAINT `Host_fk0` FOREIGN KEY (`accountID`) REFERENCES `Account`(`accountID`);
 
 ALTER TABLE `Building` ADD CONSTRAINT `Building_fk0` FOREIGN KEY (`hostID`) REFERENCES `Host`(`hostID`);
-
 
 
 
