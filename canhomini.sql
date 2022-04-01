@@ -5,8 +5,7 @@ CREATE TABLE `Room` (
 	`rentalPrice` INT(8) NOT NULL,
 	`description` TEXT NOT NULL,
 	`image` blob,
-	`hostID` BINARY NOT NULL,
-	`ExpectedNumber` BINARY NOT NULL,
+	`expectedNumber` INT(1) NOT NULL,
 	`utilities` TEXT NOT NULL,
 	PRIMARY KEY (`roomNo`)
 );
@@ -25,7 +24,7 @@ CREATE TABLE `Contract` (
 CREATE TABLE `Renter` (
 	`renterID` INT(8) NOT NULL AUTO_INCREMENT,
 	`accountID` INT(8) NOT NULL,
-	`image` blob NOT NULL,
+	`image` blob,
 	PRIMARY KEY (`renterID`)
 );
 
@@ -42,7 +41,7 @@ CREATE TABLE `Invoice` (
 CREATE TABLE `Host` (
 	`hostID` INT(8) NOT NULL AUTO_INCREMENT,
 	`accountID` INT(8) NOT NULL UNIQUE,
-	`image` blob NOT NULL,
+	`image` blob,
 	`property` INT(10) NOT NULL,
 	PRIMARY KEY (`hostID`)
 );
