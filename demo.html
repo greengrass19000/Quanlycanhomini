@@ -9,21 +9,23 @@
          <link rel="stylesheet" href="css/reset.css">
          <link rel="stylesheet" href="css/app.css">
          <link rel="stylesheet" href="css/bootstrap.css">
+         <link rel="stylesheet" href="css/bootstrap.min.css">
      </head>
      <body>
 
         <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
          
         <div class="wrapper fadeInDown">
         <div id="formContent">
-            <!-- Tabs Titles -->
+            <!-- Tabs Titles -->    
 
             <!-- Icon -->
             <div class="fadeIn first">
             </div>
 
             <!-- Login Form -->
-            <form>
+            <form action="../api/login" method="post">
             <input type="text" id="login" class="fadeIn second" name="login" placeholder="Tên đăng nhập">
             <input type="text" id="password" class="fadeIn third" name="login" placeholder="Mật khẩu">
             <input type="submit" class="fadeIn fourth" value="Đăng nhập">
