@@ -20,8 +20,8 @@ console.log(path.join(__dirname, 'resources\\views'));
 app.get('/', (req, res) => {
   return res.render('home');
 })
-app.get('/news', (req, res) => {
-  return res.render('news');
+app.get('/login', (req, res) => {
+  return res.render('login');
 })
 
 app.listen(port, () => console.log('Example app listening  at http:://localhost:${port}'))
