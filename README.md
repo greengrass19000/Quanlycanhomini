@@ -1,5 +1,5 @@
 # Quản lý căn hộ mini
-Bài tập lớn cơ sở dữ liệu - INT2211_4
+BÀI TẬP LỚN - MÔN CƠ SỞ DỮ LIỆU - INT2211_4
 DANH SÁCH THÀNH VIÊN:
 - Nguyễn Bá Nam Dũng 20020040
 - Vũ Minh Sang 20020028
