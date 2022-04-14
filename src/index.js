@@ -20,7 +20,7 @@ app.set('views', path.join(__dirname, 'resources\\views'));
 
 /* GET home page. */
 console.log(path.join(__dirname, 'resources\\views'));
-app.get('/', (req, res) => {
+app.get('/home', (req, res) => {
   return res.render('home');
 })
 app.get('/login', (req, res) => {
@@ -33,6 +33,10 @@ app.post('/login', (req, res) => {
 
 app.post('/home', (req, res) => {
   return res.render('home');
+})
+
+app.post('/login', (req, res) => {
+  return res.render('login');
 })
 
 app.listen(port, () => console.log('Example app listening  at http:://localhost:${port}'))
