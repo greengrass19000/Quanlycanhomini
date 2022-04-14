@@ -31,4 +31,8 @@ app.post('/login', (req, res) => {
   return res.send(req.body)
 })
 
+app.post('/home', (req, res) => {
+  return res.render('home');
+})
+
 app.listen(port, () => console.log('Example app listening  at http:://localhost:${port}'))
