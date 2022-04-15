@@ -8,6 +8,9 @@ class SiteController {
         res.render('login');
     }
 
+    postlogin(req, res) {
+        res.send(req.body);
+    }
     
 }
 
