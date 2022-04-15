@@ -21,7 +21,6 @@ Quản lý chi tiết các dịch vụ, tiện ích: điện, nước,...
 Tính toán và có thể xuất hóa đơn chính xác, nhanh chóng.
 Báo cáo thống kê doanh thu theo năm, tháng và bằng biểu đồ sinh động.
 
-
-
+-------------------------------------------------------------------------------------------------------------------------------------
 
 
