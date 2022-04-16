@@ -21,7 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.TEXT,
     image: DataTypes.BLOB,
     limit: DataTypes.INTEGER(1),
-    utilities: DataTypes.TEXT
+    utilities: DataTypes.TEXT,
+    state: DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'Room',

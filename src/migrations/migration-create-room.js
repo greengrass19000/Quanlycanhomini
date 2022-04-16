@@ -27,12 +27,14 @@ module.exports = {
         type: Sequelize.BLOB
       },
       limit: {
-    
         type: Sequelize.INTEGER
       },
       utilities: {
         type: Sequelize.TEXT
-      }
+      },
+      state: {
+        type: Sequelize.TEXT
+      } 
     });
   },
   async down(queryInterface, Sequelize) {
