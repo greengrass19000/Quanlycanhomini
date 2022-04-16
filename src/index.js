@@ -5,6 +5,7 @@ const { reset } = require('nodemon');
 const port = 3000;
 const path = require('path');
 const route = require('./routes');
+const connectDB = require('./config/connectDB');
 
 /*Use static file*/
 app.use(express.static(path.join(__dirname, 'public')));
@@ -13,10 +14,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded());
 app.use(express.json());
 
-/*template engine */
+/*Template engine */
 app.engine('handlebars', handlebars.engine({
   extname: 'handlebars'
 }));
+
+/*Connect database*/
+connectDB();
+
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'resources', 'views'));
 

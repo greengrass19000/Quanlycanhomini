@@ -1,6 +1,9 @@
-class SiteController {
+const db = require('../../models/index');
+const CRUDServices = require('../../services/CRUDServices');
+
+class SiteController{
     //GET home
-    home(req, res) {
+    async home(req, res){
         res.render('home');
     }
     //GET login
@@ -8,10 +11,17 @@ class SiteController {
         res.render('login');
     }
 
-    posthome(req, res) {
-        res.send(req.body);
+    register(req, res) {
+        res.render('register');
+    }
+    async postRegister(req, res) {
+        await CRUDServices.createNewUser(req.body);
+        
+    }
+    show(req, res){
+        res.render('show');
     }
     
-}
+};
 
 module.exports = new SiteController;
