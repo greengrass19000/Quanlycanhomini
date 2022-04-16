@@ -13,8 +13,9 @@ module.exports = {
       },
       address: {
           type: Sequelize.TEXT
-      }
+      },
     });
+    
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Building');

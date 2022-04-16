@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Contract.init({
-    contractID: DataTypes.INTEGER(8),
     roomID: DataTypes.INTEGER(8),
     hostID: DataTypes.INTEGER(8),
     renterID: DataTypes.INTEGER(8),
@@ -25,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Contract',
+    timestamps: false
   });
   return Contract;
 };

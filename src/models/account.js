@@ -14,10 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Account.init({
-    accountID: DataTypes.INTEGER(8),
     accountType: DataTypes.STRING(10),
     username: DataTypes.STRING(20),
-    password: DataTypes.STRING(20),
+    password: DataTypes.STRING,
     firstName: DataTypes.STRING(8),
     lastName: DataTypes.STRING(8),
     birthdate: DataTypes.DATE,
@@ -26,6 +25,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Account',
+    timestamps: false
   });
+  
   return Account;
 };

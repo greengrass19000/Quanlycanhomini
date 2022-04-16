@@ -14,12 +14,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Building.init({
-    buildingID: DataTypes.INTEGER(8),
     hostID: DataTypes.INTEGER(8),
     address: DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'Building',
+    timestamps: false
   });
   return Building;
 };

@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Invoice.init({
-    invoiceID: DataTypes.INTEGER(8),
     roomID: DataTypes.INTEGER(8),
     type: DataTypes.TEXT,
     price: DataTypes.INTEGER,
@@ -23,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Invoice',
+    timestamps: false
   });
   return Invoice;
 };

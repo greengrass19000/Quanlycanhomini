@@ -20,7 +20,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      firtName: {
+      firstName: {
         allowNull: false,
         type: Sequelize.STRING
       },
@@ -39,8 +39,10 @@ module.exports = {
       email: {
         allowNull: false,
         type: Sequelize.STRING
-      }
+      },
+      timestamps: false
     });
+    
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Account');
