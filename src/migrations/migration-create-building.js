@@ -11,6 +11,9 @@ module.exports = {
       hostID: {
           type: Sequelize.INTEGER
       },
+      image: {
+          type: Sequelize.TEXT,
+      },
       district: {
           type: Sequelize.TEXT
       },

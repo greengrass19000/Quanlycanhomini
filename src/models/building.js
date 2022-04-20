@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Building.init({
     hostID: DataTypes.INTEGER(8),
+    image: DataTypes.TEXT,
     district: DataTypes.TEXT,
     ward: DataTypes.TEXT,
     street: DataTypes.TEXT
