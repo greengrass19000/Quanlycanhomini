@@ -14,7 +14,8 @@ module.exports = {
       property: {
           allowNull: false,
           type: Sequelize.INTEGER
-      }
+      },
+      timestamps: false
     });
   },
   async down(queryInterface, Sequelize) {

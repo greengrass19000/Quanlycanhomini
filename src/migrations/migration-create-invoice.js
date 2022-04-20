@@ -23,7 +23,8 @@ module.exports = {
       },
       description: {
           type: Sequelize.TEXT
-      }
+      },
+      timestamps: false
     });
   },
   async down(queryInterface, Sequelize) {

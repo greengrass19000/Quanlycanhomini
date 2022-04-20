@@ -14,6 +14,7 @@ module.exports = {
       address: {
           type: Sequelize.TEXT
       },
+      timestamps: false
     });
     
   },

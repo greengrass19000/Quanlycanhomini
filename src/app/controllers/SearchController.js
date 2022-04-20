@@ -5,7 +5,6 @@ class SearchController {
         let data = await CRUDService.getAllRoom();
         return res.render('search', {
             roomsData: data,
-            title: "TEST TITLE",
         });
     }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 }

@@ -10,7 +10,8 @@ module.exports = {
       },
       image: {
           type: Sequelize.BLOB
-      }
+      },
+      timestamps: false
     });
   },
   async down(queryInterface, Sequelize) {
