@@ -14,8 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Host.init({
-    hostID: DataTypes.INTEGER(8),
-    image: DataTypes.BLOB,
+    contact: DataTypes.TEXT,
     property:DataTypes.INTEGER
   }, {
     sequelize,

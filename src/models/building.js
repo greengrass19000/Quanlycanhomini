@@ -15,7 +15,9 @@ module.exports = (sequelize, DataTypes) => {
   }
   Building.init({
     hostID: DataTypes.INTEGER(8),
-    address: DataTypes.TEXT
+    district: DataTypes.TEXT,
+    ward: DataTypes.TEXT,
+    street: DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'Building',

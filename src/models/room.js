@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     roomNo: DataTypes.INTEGER(3),
     rentalPrice: DataTypes.INTEGER,
     description: DataTypes.TEXT,
-    image: DataTypes.BLOB,
+    image: DataTypes.TEXT,
     limit: DataTypes.INTEGER(1),
     utilities: DataTypes.TEXT,
     state: DataTypes.TEXT

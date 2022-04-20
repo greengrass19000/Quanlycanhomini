@@ -2,7 +2,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Building', {
-      buildingID: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -11,9 +11,15 @@ module.exports = {
       hostID: {
           type: Sequelize.INTEGER
       },
-      address: {
+      district: {
           type: Sequelize.TEXT
       },
+      ward: {
+        type: Sequelize.TEXT
+    },
+      street: {
+        type: Sequelize.TEXT
+    },
       timestamps: false
     });
     

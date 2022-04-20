@@ -2,15 +2,16 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Host', {
-      hostID: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      image: {
-          type: Sequelize.BLOB
-      },
+      contact: {
+        allowNull: false,
+        type: Sequelize.TEXT
+    },
       property: {
           allowNull: false,
           type: Sequelize.INTEGER

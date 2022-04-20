@@ -2,14 +2,11 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Renter', {
-      renterID: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
-      },
-      image: {
-          type: Sequelize.BLOB
       },
       timestamps: false
     });

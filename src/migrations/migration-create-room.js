@@ -2,7 +2,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Room', {
-      roomID: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -24,7 +24,7 @@ module.exports = {
         type: Sequelize.TEXT
       },
       image: {
-        type: Sequelize.BLOB
+        type: Sequelize.TEXT
       },
       limit: {
         type: Sequelize.INTEGER

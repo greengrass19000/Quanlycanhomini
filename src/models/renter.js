@@ -14,8 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Renter.init({
-    renterID: DataTypes.INTEGER(8),
-    image: DataTypes.BLOB
   }, {
     sequelize,
     modelName: 'Renter',
