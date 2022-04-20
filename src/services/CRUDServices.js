@@ -35,6 +35,17 @@ let hashUserPassword = (password) => {
     });
 }
 
+let getAllRoom = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let rooms = await db.Room.findAll();
+            resolve(rooms);
+        } catch(e) {
+            reject(e);
+        }
+    })
+}
 module.exports = {
-    createNewUser: createNewUser
+    createNewUser: createNewUser,
+    getAllRoom: getAllRoom,
 }

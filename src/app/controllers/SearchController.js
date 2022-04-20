@@ -1,7 +1,11 @@
+const CRUDService = require('../../services/CRUDServices');
+
 class SearchController {
-    search(req, res) {
-        res.send('search');
-    }
+    async search(req, res) {
+        let data = await CRUDService.getAllRoom();
+        console.log(data);
+        return res.send("DCMMM");
+    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 }
 
 module.exports = new SearchController;

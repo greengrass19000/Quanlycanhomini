@@ -18,10 +18,6 @@ class SiteController{
         await CRUDServices.createNewUser(req.body);
         
     }
-    show(req, res){
-        res.render('show');
-    }
-    
 };
 
 module.exports = new SiteController;
