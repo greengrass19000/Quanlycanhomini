@@ -38,7 +38,9 @@ let hashUserPassword = (password) => {
 let getAllRoom = () => {
     return new Promise(async (resolve, reject) => {
         try {
-            let rooms = await db.Room.findAll();
+            let rooms = await db.Room.findAll({
+                raw : true,
+            });
             resolve(rooms);
         } catch(e) {
             reject(e);
