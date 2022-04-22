@@ -1,6 +1,8 @@
 const bcrypt = require('bcryptjs');
+const { sequelize } = require('../models/index');
 const db = require('../models/index');
 const salt = bcrypt.genSaltSync(10);
+const { QueryTypes } = require('sequelize');
 
 let createNewUser = async (data) => {
     return new Promise(async (resolve, reject)=> {
@@ -47,7 +49,25 @@ let getAllRoom = () => {
         }
     })
 }
+
+let getHostRoom = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let rooms = await sequelize.query(
+                'SELECT * from buildings b left join hosts h on b.hostID = h.id left join rooms r on r.buildingID = b.id where hostid = ? and r.id is not null;',
+                {
+                    replacements: ['10000000'],
+                    type: QueryTypes.SELECT
+                }
+                );
+            resolve(rooms);
+        } catch(e) {
+            reject(e);
+        }
+    })
+}
 module.exports = {
     createNewUser: createNewUser,
     getAllRoom: getAllRoom,
+    getHostRoom: getHostRoom,
 }

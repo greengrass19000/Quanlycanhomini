@@ -1,0 +1,18 @@
+<div class = "mt-4">
+  <div class = "row">
+
+    {{#each roomsData}}
+    <div class="col-sm-6 col-lg-4">
+      <div class="card">
+        <img src="https://www.thespruce.com/thmb/HNaNlg1vDoGfkcqG9dYByMk-458=/1365x1365/smart/filters:no_upscale()/put-together-a-perfect-guest-room-1976987-hero-223e3e8f697e4b13b62ad4fe898d492d.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">{{this.description}}</p>
+          <p class="card-text">{{this.utilities}}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
