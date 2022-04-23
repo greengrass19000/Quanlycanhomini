@@ -92,4 +92,5 @@ module.exports = {
     createNewUser: createNewUser,
     getAllRoom: getAllRoom,
     getHostRoom: getHostRoom,
+    checkUser: checkUser,
 }
