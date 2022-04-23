@@ -1,17 +1,12 @@
 const bcrypt = require('bcryptjs');
-const { sequelize } = require('../models/index');
 const db = require('../models/index');
 const { QueryTypes } = require('sequelize');
 const salt = bcrypt.genSaltSync(10);
-<<<<<<< HEAD
-const { QueryTypes } = require('sequelize');
-=======
 const { Sequelize } = require('sequelize');
 const sequelize = new Sequelize('canhomini', 'root', null, {
     host: 'localhost',
     dialect: 'mysql'
   });
->>>>>>> dda72acf02a07639465c5548058b7eebe6cf2efd
 
 let createNewUser = async (data) => {
     return new Promise(async (resolve, reject)=> {
