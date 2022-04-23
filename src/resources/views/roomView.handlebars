@@ -1,0 +1,13 @@
+{{#each Room}}
+<div class="card mb-3">
+  <div>
+    <img src= {{this.image}} style="width:50%; height:50%">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{this.description}}</h5>
+    <p class="card-text">Số lượng người ở: {{this.limit}}.</p>
+     <p class="card-text">Thông tin phòng:</p>
+    <p class="card-text">{{this.utilities}}.</p>
+  </div>
+</div>
+{{/each}}

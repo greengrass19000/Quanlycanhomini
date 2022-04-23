@@ -1,15 +1,37 @@
 <div class = "mt-4">
   <div class = "row">
 
+    <div id="pesquisa">
+        <div class="container" >
+            <div class="row">
+                <h2 class="text-center">Tìm kiếm</h2>
+                <input class="form-control" id="myInput" type="text">
+            </div>
+        </div>
+    </div>
+    <div id="event" ... /* inside this div is the whole code for the calendar */> 
+    </div>
+
+    <script>
+        $(document).ready(function(){
+          $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#event .card").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+          });
+        });
+    </script>
+
+    <hr class="my-4">
     {{#each roomsData}}
     <div class="col-sm-6 col-lg-4">
       <div class="card">
-        <img src="https://www.thespruce.com/thmb/HNaNlg1vDoGfkcqG9dYByMk-458=/1365x1365/smart/filters:no_upscale()/put-together-a-perfect-guest-room-1976987-hero-223e3e8f697e4b13b62ad4fe898d492d.jpg" class="card-img-top" alt="...">
+        <img src={{this.image}} class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title">Mô tả</h5>
           <p class="card-text">{{this.description}}</p>
-          <p class="card-text">{{this.utilities}}</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <a href="room/detail/{{this.id}}" method = "post" action = "/room/detail/" class="btn btn-primary" name = "id" value = {{this.id}}>Xem chi tiết</a>
         </div>
       </div>
     </div>
