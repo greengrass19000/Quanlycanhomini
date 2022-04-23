@@ -1,16 +1,11 @@
 <div class = "mt-4">
   <div class = "row">
 
-    <div id="pesquisa">
-        <div class="container" >
-            <div class="row">
-                <h2 class="text-center">Tìm kiếm</h2>
-                <input class="form-control" id="myInput" type="text">
-            </div>
-        </div>
-    </div>
-    <div id="event" ... /* inside this div is the whole code for the calendar */> 
-    </div>
+  <div class="container">
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method = "post" action = "/search">
+          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search" name = "search" id = "search">
+        </form>
+  </div>
 
     <script>
         $(document).ready(function(){
