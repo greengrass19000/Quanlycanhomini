@@ -44,8 +44,24 @@ let hashUserPassword = (password) => {
 let getAllRoom = () => {
     return new Promise(async (resolve, reject) => {
         try {
-           let rooms = await sequelize.query("SELECT * FROM ROOMS WHERE description IS NOT NULL", {
+           let rooms = await sequelize.query("SELECT * FROM ROOMS WHERE state LIKE 'Còn trống' ", {
             type: QueryTypes.SELECT
+           })
+           resolve(rooms);
+        } catch(e) {
+            reject(e);
+        }
+    })
+}
+
+let getRoom = (data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            var search =  "%" + data + "%";
+           let rooms = await sequelize.query("SELECT r.* FROM rooms r LEFT JOIN buildings b ON r.buildingID = b.id WHERE  b.district LIKE ? OR b.ward LIKE ? OR b.street LIKE ? ", {
+            raw: true,
+            replacements: [search, search, search],
+            type: QueryTypes.SELECT 
            })
            resolve(rooms);
         } catch(e) {
@@ -92,5 +108,5 @@ module.exports = {
     createNewUser: createNewUser,
     getAllRoom: getAllRoom,
     getHostRoom: getHostRoom,
-    checkUser: checkUser,
+    getRoom: getRoom,
 }

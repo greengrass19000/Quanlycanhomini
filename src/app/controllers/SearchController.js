@@ -9,8 +9,11 @@ class SearchController {
         });
     }
     async searchDetail(req, res) {
-        console.log(req.params);
-        res.send(req.query);
+        let data = await CRUDService.getRoom(req.body.search);
+        //console.log(req.body.search);
+        return res.render('search', {
+            roomsData: data,
+        });
     }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 }
 
