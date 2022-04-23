@@ -1,12 +1,17 @@
 const bcrypt = require('bcryptjs');
 const db = require('../models/index');
+const { QueryTypes } = require('sequelize');
 const salt = bcrypt.genSaltSync(10);
+const { Sequelize } = require('sequelize');
+const sequelize = new Sequelize('canhomini', 'root', null, {
+    host: 'localhost',
+    dialect: 'mysql'
+  });
 
 let createNewUser = async (data) => {
     return new Promise(async (resolve, reject)=> {
         try {
             let hashPasswordFromBcrypt = await hashUserPassword(data.password);
-            console.log(data);
             await db.Account.create({
                 accountType: data.accountType == '0' ? "host" : "renter",
                 username: data.username,
@@ -38,10 +43,10 @@ let hashUserPassword = (password) => {
 let getAllRoom = () => {
     return new Promise(async (resolve, reject) => {
         try {
-            let rooms = await db.Room.findAll({
-                raw : true,
-            });
-            resolve(rooms);
+           let rooms = await sequelize.query("SELECT * FROM ROOMS WHERE description IS NOT NULL", {
+            type: QueryTypes.SELECT
+           })
+           resolve(rooms);
         } catch(e) {
             reject(e);
         }

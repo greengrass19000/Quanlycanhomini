@@ -25,6 +25,11 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Contract',
     timestamps: false
+  }, {
+    slug: {
+      type: DataTypes.STRING,
+      unique: true
+  }
   });
   return Contract;
 };

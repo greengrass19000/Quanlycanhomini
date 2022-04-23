@@ -1,3 +1,5 @@
+const SequelizeSlugify = require('sequelize-slugify');
+
 'use strict';
 const {
   Model
@@ -27,6 +29,13 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Room',
     timestamps: false
+  }, {
+    slug: {
+    type: DataTypes.STRING,
+    unique: true
+}});
+  SequelizeSlugify.slugifyModel(Room, {
+    source: ['description']
   });
   return Room;
 };

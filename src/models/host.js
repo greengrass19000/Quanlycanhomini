@@ -20,6 +20,11 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Host',
     timestamps: false
+  }, {
+    slug: {
+      type: DataTypes.STRING,
+      unique: true
+  }
   });
   return Host;
 };
