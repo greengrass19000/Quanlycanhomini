@@ -3,6 +3,7 @@ const db = require('../models/index');
 const { QueryTypes } = require('sequelize');
 const salt = bcrypt.genSaltSync(10);
 const { Sequelize } = require('sequelize');
+const { reject } = require('bcrypt/promises');
 const sequelize = new Sequelize('canhomini', 'root', null, {
     host: 'localhost',
     dialect: 'mysql'
@@ -64,6 +65,24 @@ let getHostRoom = () => {
                 }
                 );
             resolve(rooms);
+        } catch(e) {
+            reject(e);
+        }
+    })
+}
+
+let checkUser = (data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let password = await hashUserPassword(data.password);
+            let acc = await sequelize.query(
+                'select id, accounttype from accounts where username = ? and password = ?;',
+                {
+                    replacements: [data.username, password],
+                    type: QueryTypes.SELECT
+                }
+            );
+            resolve(acc); 
         } catch(e) {
             reject(e);
         }

@@ -18,6 +18,16 @@ class SiteController{
         await CRUDServices.createNewUser(req.body);
         
     }
+
+    async postLogin(req, res, next) {
+        let id = await CRUDServices.checkUser(req.body);
+        if(!id) {
+            res.send(id.body);
+        }
+        else {
+            res.send('wrong info');
+        }
+    }
 };
 
 module.exports = new SiteController;
