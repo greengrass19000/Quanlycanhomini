@@ -21,8 +21,8 @@ class SiteController{
 
     async postLogin(req, res, next) {
         let id = await CRUDServices.checkUser(req.body);
-        if(!id) {
-            res.send(id.body);
+        if(id) {
+            res.render('home', id);
         }
         else {
             res.send('wrong info');

@@ -12,11 +12,10 @@ const sequelize = new Sequelize('canhomini', 'root', null, {
 let createNewUser = async (data) => {
     return new Promise(async (resolve, reject)=> {
         try {
-            let hashPasswordFromBcrypt = await hashUserPassword(data.password);
             await db.Account.create({
                 accountType: data.accountType == '0' ? "host" : "renter",
                 username: data.username,
-                password: hashPasswordFromBcrypt,
+                password: data.password,
                 firstName: data.firstName,
                 lastName: data.lastName,
                 birthdate: data.birthdate,
@@ -25,7 +24,7 @@ let createNewUser = async (data) => {
             })
             resolve();
         }catch(e) {
-            reject(e);
+            reject(e);  
         }
     });
 }
@@ -104,6 +103,7 @@ let checkUser = (data) => {
         }
     })
 }
+
 module.exports = {
     createNewUser: createNewUser,
     getAllRoom: getAllRoom,
