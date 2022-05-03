@@ -35,7 +35,7 @@ class SiteController{
         }
         else {
             return res.status(200).json({
-                id[0]
+                id
             })
         }
     }
