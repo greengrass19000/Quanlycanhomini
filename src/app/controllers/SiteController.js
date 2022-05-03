@@ -20,12 +20,23 @@ class SiteController{
     }
 
     async postLogin(req, res, next) {
-        let id = await CRUDServices.checkUser(req.body);
-        if(id) {
-            res.render('home', id);
+        let username = req.body.username;
+        let password = req.body.password;
+        if(!username || !password) {
+            return res.status(500).json({
+                message : 'lack of information'
+            })
+        }
+        let id = await CRUDServices.checkUser(username, password);
+        if(id.length == 0) {
+            return res.status(500).json({
+                message : 'wrong username/password'
+            })  
         }
         else {
-            res.send('wrong info');
+            return res.status(200).json({
+                id[0]
+            })
         }
     }
 };

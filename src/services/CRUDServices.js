@@ -86,14 +86,13 @@ let getHostRoom = () => {
     })
 }
 
-let checkUser = (data) => {
+let checkUser = (username, password) => {
     return new Promise(async (resolve, reject) => {
         try {
-            let password = await hashUserPassword(data.password);
             let acc = await sequelize.query(
                 'select id, accounttype from accounts where username = ? and password = ?;',
                 {
-                    replacements: [data.username, password],
+                    replacements: [username, password],
                     type: QueryTypes.SELECT
                 }
             );
