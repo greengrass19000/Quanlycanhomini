@@ -1,6 +1,6 @@
 const db = require('../../models/index');
 const CRUDServices = require('../../services/CRUDServices');
-
+const userService = require('../../services/userService');
 class SiteController{
     //GET home
     async home(req, res){
@@ -29,16 +29,19 @@ class SiteController{
         }
         let id = await CRUDServices.checkUser(username, password);
         if(id.length == 0) {
-            return res.status(500).json({
+            res.status(500).json({
                 message : 'wrong username/password'
             })  
         }
         else {
-            return res.status(200).json({
-                id
-            })
-        }
+            return await userService.sendHome(id[0]);
     }
+    }
+
+    postHome(req, res, next) {
+        res.send(req.params);
+    }
+    
 };
 
 module.exports = new SiteController;
