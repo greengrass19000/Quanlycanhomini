@@ -35,11 +35,14 @@ class SiteController{
         }
         else {
             return await userService.sendHome(id[0]);
+            res.status(200).json({
+                message : 'OK'
+            })
     }
     }
 
-    postHome(req, res, next) {
-        res.send(req.params);
+    postHome(req, res) {
+        res.send("hello");
     }
     
 };
