@@ -7,7 +7,10 @@ DANH SÁCH THÀNH VIÊN:
 
 Sơ đồ quan hệ giữa các thực thể:
 
-![download](https://user-images.githubusercontent.com/72069705/160273653-1b433de6-41ae-4deb-80bd-ef15c2a637be.png)
+![download](https://user-images.githubusercontent.com/88265142/167351558-82fe41dc-c32b-4606-92bb-e737b8bbac7c.png)
+
+![image](https://user-images.githubusercontent.com/88265142/167351566-8d4c4b65-b18e-4de4-a655-d44ffc9c8bd8.png)
+
 
 Giới thiệu sản phẩm :
 Đáp ứng nhiều tính năng quản lý linh hoạt, thuận tiện trong sử dụng nhằm hướng đến trở thành ứng dụng quản lý nhà cho thuê thực dụng nhất trên thị trường. Một giải pháp quản lý hiệu quả sẽ giúp bạn tối đa hóa doanh thu cũng như tiết kiệm được nhiều thời gian quản lý, dễ dàng mở rộng quy mô kinh doanh mà không phải lo lắng về con người, cách thức quản lý.

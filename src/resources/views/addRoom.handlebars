@@ -1,0 +1,59 @@
+<div class = "mt-4">
+  <div class = "row">
+    <div class="container">
+        {{#each buildingData}}
+            <div>
+                <div class="card">
+                    <img src={{this.image}} class="col-sm-6" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">Địa chỉ</h5>
+                    <p class="card-text">{{this.street}}</p>
+                    <p class="card-text">{{this.ward}}</p>
+                    <p class="card-text">{{this.district}}</p>
+                </div>
+            </div>
+            <form action = "/host" method = "post">
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Tòa</label>
+                    <input class="form-control" name = "buildingID" id="buildingID" value={{this.id}} readonly>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Tầng</label>
+                    <input class="form-control" name = "floorNo" id="floorNo">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Phòng</label>
+                    <input class="form-control" name = "roomNo" id="roomNo">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Giá thuê</label>
+                    <input class="form-control" name ="rentalPrice" id="rentalPrice">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Mô tả</label>
+                    <input class="form-control" name = "description" id="description">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Ảnh</label>
+                    <input class="form-control" name = "image" id="image">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Giới hạn số người ở</label>
+                    <input class="form-control" name = "limit" id="limit">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Tiện ích phòng</label>
+                    <input class="form-control" name = "utilities" id="utilities">
+                </div>
+                        <div class="form-group">
+                    <label for="exampleFormControlInput1">Trạng thái</label>
+                    <input class="form-control" name = "state" id="state">
+                </div>
+                <hr class="my-4">
+
+                <button class="btn btn-primary btn" type="submit">Thêm</button>
+            </form>
+        {{/each}}
+    </div>
+  </div>
+</div>
