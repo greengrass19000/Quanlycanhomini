@@ -16,6 +16,8 @@ class RoomController {
         console.log(RoomView);
         res.render('roomView', {
             Room: RoomView,
+            id: req.query.id,
+            type: req.query.type
         });
     }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 }
