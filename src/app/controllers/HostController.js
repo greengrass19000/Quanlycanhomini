@@ -5,6 +5,8 @@ class HostController {
         let data = await CRUDService.getHostRoom(req.query);   
         return res.render('host', {
             roomsData: data,
+            id: req.query.id,
+            type: req.query.type
         });
     }
     async postHost(req, res) {

@@ -19,6 +19,11 @@ app.engine('handlebars', handlebars.engine({
   extname: 'handlebars'
 }));
 
+var hbs = handlebars.create({});
+hbs.handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
+  return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});      
+
 /*Connect database*/
 connectDB();
 

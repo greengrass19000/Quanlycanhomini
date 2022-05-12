@@ -8,9 +8,9 @@ const sendHome = async (id, type) => {
       // .then(function (response) {
       //   response  
       // })
-      // .catch(function (error) {
-      //   console.log(error);
-      // });
+      .catch(function (error) {
+        console.log(error);
+      });
 }
 
 

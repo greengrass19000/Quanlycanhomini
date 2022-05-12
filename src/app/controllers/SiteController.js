@@ -5,7 +5,6 @@ class SiteController{
     //GET home
     async home(req, res){
         res.render('home', req.query);
-        console.log(req.query.id);
     }
     //GET login
     login(req, res) {
@@ -20,7 +19,7 @@ class SiteController{
         
     }
 
-    async postLogin(req, res, next) {
+    async postLogin(req, res) {
         let username = req.body.username;
         let password = req.body.password;
         if(!username || !password) {
@@ -42,8 +41,7 @@ class SiteController{
         }
     }
 
-    postHome(req, res) {
-        
+    postHome(req, res) {      
         res.status(302).json({
             message : 'ok'
         })
