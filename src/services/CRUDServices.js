@@ -76,7 +76,7 @@ let getHostRoom = (data) => {
                 let rooms = await sequelize.query(
                     'SELECT * from buildings b left join hosts h on b.hostID = h.id left join rooms r on r.buildingID = b.id where hostid = ?;',
                     {
-                        replacements: ['10000000'],
+                        replacements: [data.id],
                         type: QueryTypes.SELECT
                     }
                     );
@@ -92,7 +92,7 @@ let getHostRoom = (data) => {
                 let rooms = await sequelize.query(
                     'SELECT * from buildings b left join hosts h on b.hostID = h.id left join rooms r on r.buildingID = b.id where hostid = ? and r.state LIKE ?;',
                     {
-                        replacements: ['10000000', data.state],
+                        replacements: [data.id, data.state],
                         type: QueryTypes.SELECT
                     }
                     );
@@ -128,7 +128,7 @@ let getHostBuilding =(data) => {
             let building = await sequelize.query(
                 'SELECT * FROM buildings WHERE hostID = ?',
                 {
-                    replacements: ['10000000'],
+                    replacements: [data.id],
                     type: QueryTypes.SELECT
                 }
             );
