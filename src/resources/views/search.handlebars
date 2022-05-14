@@ -2,7 +2,7 @@
   <div class = "row">
 
   <div class="container">
-     <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method = "post" action = "/search">
+     <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method = "post" action = "/search  ">
         <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search" name = "search" id = "search">
     </form>
   </div>
@@ -26,7 +26,7 @@
         <div class="card-body">
           <h5 class="card-title">Mô tả</h5>
           <p class="card-text">{{this.description}}</p>
-          <a href="room/detail/{{this.id}}?id={{this.id}}&type={{this.type}}" method = "post" action = "/room/detail/" class="btn btn-primary" name = "id" value = {{this.id}}>Xem chi tiết</a>
+          <a href="room/detail/{{this.id}}?id={{this.id}}&type={{this.type}}" method = "post" action = "/room/detail/?id={{this.id}}&type={{this.type}}" class="btn btn-primary" name = "id" value = {{this.id}}>Xem chi tiết</a>
         </div>
       </div>
     </div>
