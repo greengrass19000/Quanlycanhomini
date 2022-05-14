@@ -6,7 +6,7 @@ class SearchController {
         let data = await CRUDService.getAllRoom();
         return res.render('search', {
             roomsData: data,
-            id: req.query.id,
+            userid: req.query.id,
             type: req.query.type
         });
     }
@@ -15,7 +15,7 @@ class SearchController {
         //console.log(req.body.search);
         return res.render('search', {
             roomsData: data,
-            id: req.query.id,
+            userid: req.query.id,
             type: req.query.type
         });
     }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
