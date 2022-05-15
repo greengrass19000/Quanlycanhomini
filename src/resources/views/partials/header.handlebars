@@ -8,7 +8,7 @@
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="/home" class="nav-link px-2 text-white">Home</a></li>
+          <li><a href="/home?id={{this.id}}&type={{this.type}}" class="nav-link px-2 text-white">Home</a></li>
           
            {{#if this.id}}
               <li><a href="/search?id={{this.id}}&type={{this.type}}" class="nav-link px-2 text-white">Search</a></li>
@@ -23,7 +23,7 @@
                   <button type="button" class="btn btn-outline-light me-2">Manage</button>
                 </a>
               {{/ifEquals}}
-              <a href="/home?id={{this.id}}&type={{this.type}}">
+              <a href="/home">
                   <button type="button" class="btn btn-outline-light me-2">Logout</button>
               </a>
           {{else}}
