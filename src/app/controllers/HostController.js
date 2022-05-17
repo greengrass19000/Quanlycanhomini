@@ -10,12 +10,9 @@ class HostController {
         });
     }
     async postHost(req, res) {
-        console.log("+++++++++++++++");
-        console.log("+++++++++++++++");
-        console.log(req.body);
-        console.log("+++++++++++++++");
-        console.log("+++++++++++++++");
+        let data = await CRUDService.getHostRoomAfterAdd(req.body);
         return res.render('host', {
+            roomsData: data,
             id: req.query.id,
             type: req.query.type
         });

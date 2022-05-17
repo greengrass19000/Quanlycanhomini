@@ -156,6 +156,29 @@ let addRoom =(data) => {
     })
 }
 
+let getHostRoomAfterAdd = (data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await sequelize.query(
+                'INSERT INTO rooms (rooms.buildingID, rooms.floorNo, rooms.roomNo, rooms.rentalPrice, rooms.description, rooms.image, rooms.limit, rooms.utilities, rooms.state) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                {
+                    replacements: [data.buildingID, data.floorNo, data.roomNo, data.rentalPrice, data.description, data.image, data.limit, data.utilities, data.state],
+                }
+            );
+            let rooms = await sequelize.query(
+                'SELECT * from buildings b left join hosts h on b.hostID = h.id left join rooms r on r.buildingID = b.id where hostid = ?;',
+                {
+                    replacements: [data.id],
+                    type: QueryTypes.SELECT
+                }
+                );
+            resolve(rooms);
+        } catch(e) {
+            reject(e);
+        }
+    })
+
+}
 module.exports = {
     createNewUser: createNewUser,
     getAllRoom: getAllRoom,
@@ -163,5 +186,6 @@ module.exports = {
     getRoom: getRoom,
     checkUser: checkUser,
     getHostBuilding: getHostBuilding,
-    addRoom: addRoom
+    addRoom: addRoom,
+    getHostRoomAfterAdd: getHostRoomAfterAdd
 }

@@ -12,7 +12,7 @@
                     <p class="card-text">{{this.district}}</p>
                 </div>
             </div>
-            <form action = "/host" method = "post">
+            <form action = "/host?id={{../id}}&type={{../type}}" method = "post">
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Tòa</label>
                     <input class="form-control" name = "buildingID" id="buildingID" value={{this.id}} readonly>
