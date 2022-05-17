@@ -16,6 +16,8 @@ class HostController {
         console.log("+++++++++++++++");
         console.log("+++++++++++++++");
         return res.render('host', {
+            id: req.query.id,
+            type: req.query.type
         });
     }
     async add(req, res) {

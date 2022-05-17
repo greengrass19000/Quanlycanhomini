@@ -9,7 +9,7 @@
           <p class="card-text">{{this.street}}</p>
           <p class="card-text">{{this.ward}}</p>
           <p class="card-text">{{this.district}}</p>
-          <a href="/host/add/building/{{this.id}}" method = "post" class="btn btn-primary" name = "id" value = {{this.id}}>Thêm</a>
+          <a href="/host/add/building/{{this.id}}?id={{../id}}&type={{../type}}" method = "post" class="btn btn-primary" name = "id" value = {{this.id}}>Thêm</a>
         </div>
       </div>
     </div>
