@@ -29,17 +29,6 @@ let createNewUser = async (data) => {
     });
 }
 
-let hashUserPassword = (password) => {
-    return new Promise(async (resolve, reject) => {
-        try {
-            let hashPassword = await bcrypt.hashSync(password, salt);
-            resolve(hashPassword);
-        }catch(e) {
-            reject(e);
-        }
-    });
-}
-
 let getAllRoom = () => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -179,6 +168,23 @@ let getHostRoomAfterAdd = (data) => {
     })
 
 }
+
+let getUser = (data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            var search =  "%" + data + "%";
+            let user = await sequelize.query("SELECT * FROM accounts WHERE username like ?", {
+            raw: true,
+            replacements: [search],
+            type: QueryTypes.SELECT 
+           })
+           resolve(user);
+        } catch(e) {
+            reject(e);
+        }
+    })
+}
+
 module.exports = {
     createNewUser: createNewUser,
     getAllRoom: getAllRoom,

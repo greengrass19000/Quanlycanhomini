@@ -23,6 +23,12 @@
                   <button type="button" class="btn btn-outline-light me-2">Manage</button>
                 </a>
               {{/ifEquals}}
+              
+              {{#ifEquals this.type "renter"}}
+                <a href="/viewcontract?id={{this.id}}&type={{this.type}}">
+                  <button type="button" class="btn btn-outline-light me-2">View Contract</button>
+                </a>
+              {{/ifEquals}}
               <a href="/home">
                   <button type="button" class="btn btn-outline-light me-2">Logout</button>
               </a>
