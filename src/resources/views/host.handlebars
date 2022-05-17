@@ -4,17 +4,19 @@
     <a href="/host/edit?id={{this.id}}&type={{this.type}}"><button type="button" class="btn btn-outline-primary">Edit</button></a>
     <a href="/host/delete?id={{this.id}}&type={{this.type}}"><button type="button" class="btn btn-outline-primary">Delete</button></a>
   </div>
-  <form class="needs-validation" novalidate action = "/host?id={{this.id}}&type={{this.type}}" method = "post">
+  <form class="needs-validation" novalidate action = "/host" method = "post">
+    <input type="hidden" name="id" value={{this.id}} /> 
+    <input type="hidden" name="type" value={{this.type}} /> 
     <div class="col-md-4">
       <label for="state" class="form-label">Lọc</label>
-      <select class="form-select" id="state" name = "state" required>
+      <select class="form-select" id="state" name = "state">
         <option value = "">Chọn</option>
         <option value = "Còn trống">Còn trống</option>
         <option value = "Đã thuê">Đã thuê</option>
         <option value = "Tất cả">Tất cả</option>
       </select>
-    </div>
     <button class= "btn btn-primary btn" type="submit">Lọc</button>
+    </div>
   </form>
   <hr class="my-4">
   <div class = "row">
