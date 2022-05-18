@@ -1,0 +1,18 @@
+  <div class = "row">
+    {{#each roomData}}
+    <div class="col-sm-6 col-lg-4">
+      <div class="card">
+        <img src={{this.image}} class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Mô tả: {{this.description}}</h5>
+            <p class="card-text">Tiện ích phòng: {{this.utilities}}</p>
+            <p class="card-text">Trạng thái: {{this.state}}</p>
+            <p class="card-text">Mã phòng: {{this.id}}</p>
+            <form method = "post" action = "/host/delete/{{this.id}}?id={{../id}}&type={{../type}}" class="btn btn-primary">
+              <button class="btn btn-primary btn" type="submit">Xóa phòng</button>
+            </form>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>

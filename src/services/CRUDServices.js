@@ -88,7 +88,6 @@ let getHostRoom = (data) => {
     }else {
         return new Promise(async (resolve, reject) => {
             try {
-                console.log(data.state);
                 let rooms = await sequelize.query(
                     'SELECT * from buildings b left join hosts h on b.hostID = h.id left join rooms r on r.buildingID = b.id where hostid = ? and r.state LIKE ?;',
                     {
@@ -177,8 +176,49 @@ let getHostRoomAfterAdd = (data) => {
             reject(e);
         }
     })
+}
+let deleteRoom = (data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let roomLists = await sequelize.query(
+                'SELECT * FROM rooms WHERE buildingID = ?',
+                {
+                    replacements: [data.id],
+                    type: QueryTypes.SELECT
+                }
+            );
+            resolve(roomLists); 
+        } catch(e) {
+            reject(e);
+        }
+    })
+}
+
+let afterDeleteRoom = (data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let roomLists = await sequelize.query(
+                'SELECT * FROM buildings b WHERE hostID IN (SELECT b.hostID FROM rooms r WHERE r.id = ?)',
+                {
+                    replacements: [data.id],
+                    type: QueryTypes.SELECT
+                }
+            );
+            await sequelize.query(
+                'DELETE FROM rooms WHERE id = ?',
+                {
+                    replacements: [data.id]
+                }
+            )
+
+            resolve(roomLists); 
+        } catch(e) {
+            reject(e);
+        }
+    })
 
 }
+
 module.exports = {
     createNewUser: createNewUser,
     getAllRoom: getAllRoom,
@@ -187,5 +227,7 @@ module.exports = {
     checkUser: checkUser,
     getHostBuilding: getHostBuilding,
     addRoom: addRoom,
-    getHostRoomAfterAdd: getHostRoomAfterAdd
+    getHostRoomAfterAdd: getHostRoomAfterAdd,
+    deleteRoom: deleteRoom,
+    afterDeleteRoom: afterDeleteRoom
 }

@@ -1,0 +1,18 @@
+<div class = "mt-4">
+  <div class = "row">
+    {{#each buildingData}}
+    <div class="col-sm-6 col-lg-4">
+      <div class="card">
+        <img src={{this.image}} class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Địa chỉ</h5>
+          <p class="card-text">{{this.street}}</p>
+          <p class="card-text">{{this.ward}}</p>
+          <p class="card-text">{{this.district}}</p>
+          <a href="/host/delete/building/{{this.id}}?id={{../id}}&type={{../type}}" method = "post" class="btn btn-primary" name = "id" value = {{this.id}}>Chọn</a>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
