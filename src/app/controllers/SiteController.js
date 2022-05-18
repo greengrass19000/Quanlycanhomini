@@ -1,6 +1,5 @@
 const db = require('../../models/index');
 const CRUDServices = require('../../services/CRUDServices');
-const userService = require('../../services/userService');
 class SiteController{
     //GET home
     async home(req, res){

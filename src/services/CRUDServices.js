@@ -143,6 +143,48 @@ let addRoom =(data) => {
         }
     })
 }
+let addBuilding = (data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let building = await sequelize.query(
+                'SELECT * FROM buildings WHERE hostID = ? LIMIT 1',
+                {
+                    replacements: [data.id],
+                    type: QueryTypes.SELECT
+                }
+            );
+            resolve(building); 
+        } catch(e) {
+            reject(e);
+        }
+})
+}
+
+let afterAddedBuilding = (data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            console.log('------');
+            console.log(data);
+            console.log('------');
+            await sequelize.query(
+                'INSERT INTO buildings (buildings.hostID, buildings.district, buildings.ward, buildings.street, buildings.image) VALUES(?, ?, ?, ?, ?)',
+                {
+                    replacements: [data.hostID, data.district, data.ward, data.street, data.image],
+                }
+            );
+            let building = await sequelize.query(
+                'SELECT * FROM buildings WHERE hostID = ?',
+                {
+                    replacements: [data.hostID],
+                    type: QueryTypes.SELECT
+                }
+            )
+            resolve(building);
+        } catch(e) {
+            reject(e);
+        }
+    })
+}
 
 let getHostRoomAfterAdd = (data) => {
     return new Promise(async (resolve, reject) => {
@@ -216,7 +258,9 @@ module.exports = {
     checkUser: checkUser,
     getHostBuilding: getHostBuilding,
     addRoom: addRoom,
+    addBuilding: addBuilding,
     getHostRoomAfterAdd: getHostRoomAfterAdd,
     deleteRoom: deleteRoom,
-    afterDeleteRoom: afterDeleteRoom
+    afterDeleteRoom: afterDeleteRoom,
+    afterAddedBuilding: afterAddedBuilding
 }
