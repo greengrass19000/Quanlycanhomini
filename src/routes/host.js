@@ -3,6 +3,7 @@ const router = express.Router();
 const HostController = require('../app/controllers/HostController');
 
 router.post('/buildingAdded', HostController.afterAddedBuilding);
+router.get('/buildingDeleted/:id', HostController.afterDeletedBuilding);
 router.post('/', HostController.postHost);
 router.post('/delete/:id', HostController.afterDeleteRoom);
 router.get('/add/building/:id', HostController.addRoom);

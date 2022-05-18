@@ -163,9 +163,6 @@ let addBuilding = (data) => {
 let afterAddedBuilding = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
-            console.log('------');
-            console.log(data);
-            console.log('------');
             await sequelize.query(
                 'INSERT INTO buildings (buildings.hostID, buildings.district, buildings.ward, buildings.street, buildings.image) VALUES(?, ?, ?, ?, ?)',
                 {
@@ -250,6 +247,35 @@ let afterDeleteRoom = (data) => {
 
 }
 
+let afterDeletedBuilding = (data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let building = await sequelize.query(
+                'SELECT * FROM buildings WHERE hostID IN (SELECT hostID FROM buildings WHERE id = ?) AND id != ?',
+                {
+                    replacements: [data.id, data.id],
+                    type: QueryTypes.SELECT
+                }
+            )
+            await sequelize.query(
+                'DELETE FROM rooms WHERE buildingID = ?',
+                {
+                    replacements: [data.id]
+                }
+            );
+            await sequelize.query(
+                'DELETE FROM buildings WHERE id = ?',
+                {
+                    replacements: [data.id]
+                }
+            );
+            resolve(building);
+        } catch(e) {
+            reject(e);
+        }
+    })
+}
+
 module.exports = {
     createNewUser: createNewUser,
     getAllRoom: getAllRoom,
@@ -262,5 +288,6 @@ module.exports = {
     getHostRoomAfterAdd: getHostRoomAfterAdd,
     deleteRoom: deleteRoom,
     afterDeleteRoom: afterDeleteRoom,
-    afterAddedBuilding: afterAddedBuilding
+    afterAddedBuilding: afterAddedBuilding,
+    afterDeletedBuilding: afterDeletedBuilding
 }

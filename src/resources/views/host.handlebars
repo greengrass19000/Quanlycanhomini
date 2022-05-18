@@ -1,7 +1,7 @@
 <form class = "mt-4">
   <div class="btn-group" role="group" aria-label="Basic outlined example">
-    <a href="/host/add?id={{this.id}}&type={{this.type}}"><button type="button" class="btn btn-outline-primary">Add</button></a>
-    <a href="/host/delete?id={{this.id}}&type={{this.type}}"><button type="button" class="btn btn-outline-primary">Delete</button></a>
+    <a href="/host/add?id={{this.id}}&type={{this.type}}"><button type="button" class="btn btn-outline-primary">Thêm</button></a>
+    <a href="/host/delete?id={{this.id}}&type={{this.type}}"><button type="button" class="btn btn-outline-primary">Xóa</button></a>
   </div>
   <form class="needs-validation" novalidate action = "/host" method = "post">
     <input type="hidden" name="id" value={{this.id}} /> 

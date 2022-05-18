@@ -10,6 +10,7 @@
           <p class="card-text">{{this.ward}}</p>
           <p class="card-text">{{this.district}}</p>
           <a href="/host/delete/building/{{this.id}}?id={{../id}}&type={{../type}}" method = "post" class="btn btn-primary" name = "id" value = {{this.id}}>Chọn</a>
+          <a href="/host/buildingDeleted/{{this.id}}?id={{../id}}&type={{../type}}" method = "post" name = "id" value = {{this.id}}><button type="button" class="btn btn-outline-primary">Xóa</button></a>
         </div>
       </div>
     </div>

@@ -44,11 +44,6 @@ class HostController {
     }
     async afterAddedBuilding(req, res) {
         let data = await CRUDService.afterAddedBuilding(req.body);   
-        console.log('---------');
-        console.log('---------');  
-        console.log(req.body);  
-        console.log('---------');  
-        console.log('---------');   
         return res.render('add', {
             buildingData: data,
             id: req.query.id,
@@ -86,7 +81,15 @@ class HostController {
             id: req.query.id,
             type: req.query.type
         });
-    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+    }
+    async afterDeletedBuilding(req, res) {
+        let data = await CRUDService.afterDeletedBuilding(req.params);
+        return res.render('delete', {
+            buildingData: data,
+            id: req.query.id,
+            type: req.query.type
+        });
+    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 }
 
 module.exports = new HostController;
