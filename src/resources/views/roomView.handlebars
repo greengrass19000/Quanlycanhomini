@@ -13,23 +13,28 @@
     <p class="card-text">Thông tin phòng:</p>
     <p class="card-text">Số lượng người ở: {{this.limit}}.</p>
     <p class="card-text">Tiện ích: {{this.utilities}}.</p>
-    <p class="card-text">Trạng thái:{{this.state}}.</p>
+    <p class="card-text">Trạng thái: {{this.state}}.</p>
   </div>
   {{#ifEquals ../type 'host'}}
-   <form class="needs-validation" novalidate action = "/host" method = "post">
+  {{#ifEquals this.state 'Đã thuê'}}
+    <form class="needs-validation" novalidate action = "/createinvoice" method = "post">
     <input type="hidden" name="id" value={{this.id}} /> 
     <input type="hidden" name="type" value={{this.type}} /> 
-    <div class="col-md-4">
-      <label for="state" class="form-label">Lọc</label>
-      <select class="form-select" id="state" name = "state">
-        <option value = "">Chọn</option>
-        <option value = "Còn trống">Còn trống</option>
-        <option value = "Đã thuê">Đã thuê</option>
-        <option value = "Tất cả">Tất cả</option>
-      </select>
-    <button class= "btn btn-primary btn" type="submit">Lọc</button>
-    </div>
-  </form>
+    <button class= "btn btn-primary btn" type="submit">Tạo hóa đơn</button>
+    </form>
+    {{/ifEquals}}
+    {{#ifEquals this.state 'Còn trống'}}  
+    <form class="needs-validation" novalidate action = "/createcontract" method = "post">
+    <input type="hidden" name="id" value={{this.id}} /> 
+    <input type="hidden" name="type" value={{this.type}} /> 
+    <button class= "btn btn-primary btn" type="submit">Tạo hợp đồng</button>
+    </form>
+    {{/ifEquals}}
+    <form class="needs-validation" novalidate action = "/edit" method = "post">
+    <input type="hidden" name="id" value={{this.id}} /> 
+    <input type="hidden" name="type" value={{this.type}} /> 
+    <button class= "btn btn-primary btn" type="submit">Sửa phòng</button>
+    </form>
   {{/ifEquals}}
 </div>
 {{/each}}
