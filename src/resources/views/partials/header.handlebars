@@ -8,36 +8,36 @@
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="/home?id={{this.id}}&type={{this.type}}" class="nav-link px-2 text-white">Home</a></li>
+          <li><a href="/home?id={{this.id}}&type={{this.type}}" class="nav-link px-2 text-white">Trang chủ</a></li>
           
            {{#if this.id}}
-              <li><a href="/search?id={{this.id}}&type={{this.type}}" class="nav-link px-2 text-white">Search</a></li>
+              <li><a href="/search?id={{this.id}}&type={{this.type}}" class="nav-link px-2 text-white">Tìm kiếm</a></li>
           {{else}}
-              <li><a href="/search" class="nav-link px-2 text-white">Search</a></li>
+              <li><a href="/search" class="nav-link px-2 text-white">Tìm kiếm</a></li>
           {{/if}}
         </ul>
         <div class="text-end">
           {{#if this.id}}
               {{#ifEquals this.type "host"}}
                 <a href="/host?id={{this.id}}&type={{this.type}}">
-                  <button type="button" class="btn btn-outline-light me-2">Manage</button>
+                  <button type="button" class="btn btn-outline-light me-2">Quản lý</button>
                 </a>
               {{/ifEquals}}
               
               {{#ifEquals this.type "renter"}}
                 <a href="/viewcontract?id={{this.id}}&type={{this.type}}">
-                  <button type="button" class="btn btn-outline-light me-2">View Contract</button>
+                  <button type="button" class="btn btn-outline-light me-2">Xem hóa đơn</button>
                 </a>
               {{/ifEquals}}
               <a href="/home">
-                  <button type="button" class="btn btn-outline-light me-2">Logout</button>
+                  <button type="button" class="btn btn-outline-light me-2">Đăng xuất</button>
               </a>
           {{else}}
               <a href="/login">
-                 <button type="button" class="btn btn-outline-light me-2">Login</button>
+                 <button type="button" class="btn btn-outline-light me-2">Đăng nhập</button>
               </a>
               <a href="/register">
-              <button type="button" class="btn btn-warning">Sign-up</button>
+              <button type="button" class="btn btn-warning">Đăng ký</button>
               </a>
           {{/if}}
         </div>
