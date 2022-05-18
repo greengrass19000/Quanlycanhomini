@@ -8,5 +8,4 @@ router.post('/post-register', SiteController.postRegister);
 router.post('/login', SiteController.postLogin);
 router.get('/home', SiteController.home);
 router.post('/home', SiteController.postHome);
-
 module.exports = router;
