@@ -7,7 +7,7 @@ class SiteController{
     }
     //GET login
     login(req, res) {
-        res.render('login');
+        res.render('login', req.query);
     }
 
     register(req, res) {
@@ -31,11 +31,11 @@ class SiteController{
         let username = req.body.username;
         let password = req.body.password;
         if(!username || !password) {
-            res.redirect('/register?message=Thiếu thông tin!!');
+            return res.redirect('/login?message=Thiếu thông tin!!');
         }
         let id = await CRUDServices.checkUser(username, password);
         if(id.length == 0) {
-            res.redirect('/register?message=Nhập sai tài khoản/mật khẩu!!');
+            return res.redirect('/login?message=Nhập sai tài khoản/mật khẩu!!');
         }
         else {
             let idd = id[0].id;
