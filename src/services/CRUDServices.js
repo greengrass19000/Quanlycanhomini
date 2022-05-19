@@ -16,7 +16,7 @@ let createNewUser = async (data) => {
                 accountType: data.accountType == '0' ? "host" : "renter",
                 username: data.username,
                 password: data.password,
-                firstName: data.firstName,
+                firstName: data.firstName,  
                 lastName: data.lastName,
                 birthdate: data.birthdate,
                 phone: data.phone,
@@ -100,6 +100,23 @@ let checkUser = (username, password) => {
                 'select id, accounttype from accounts where username = ? and password = ?;',
                 {
                     replacements: [username, password],
+                    type: QueryTypes.SELECT
+                }
+            );
+            resolve(acc); 
+        } catch(e) {
+            reject(e);
+        }
+    })
+}
+
+let checkUser2 = (username) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let acc = await sequelize.query(
+                'select id from accounts where username = ?;',
+                {
+                    replacements: [username],
                     type: QueryTypes.SELECT
                 }
             );
@@ -282,6 +299,7 @@ module.exports = {
     getHostRoom: getHostRoom,
     getRoom: getRoom,
     checkUser: checkUser,
+    checkUser2: checkUser2,
     getHostBuilding: getHostBuilding,
     addRoom: addRoom,
     addBuilding: addBuilding,

@@ -18,7 +18,9 @@ class ContractController {
             id: req.query.id,
             type: req.query.type
         });
-    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+    }      
+    async create(req, res) {
+    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
 }
 
 module.exports = new ContractController;
