@@ -24,6 +24,9 @@
                 </a>
               {{/ifEquals}}              
               {{#ifEquals this.type "renter"}}
+                <a href="/viewinvoice?id={{this.id}}&type={{this.type}}">
+                  <button type="button" class="btn btn-outline-light me-2">Xem hợp đồng</button>
+                </a>
                 <a href="/viewcontract?id={{this.id}}&type={{this.type}}">
                   <button type="button" class="btn btn-outline-light me-2">Xem hóa đơn</button>
                 </a>
