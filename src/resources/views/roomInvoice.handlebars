@@ -1,0 +1,17 @@
+{{#each roomID}}
+<div class="card mb-3">
+    <a href="/host/invoice/add/{{this.id}}?id={{../id}}&type={{../type}}"><button type="button" class="btn btn-outline-primary" name = "id" value = {{this.id}}>Tạo hóa đơn</button></a>
+</div>
+{{/each}}
+<hr class="my-4">
+{{#each invoiceData}}
+<div class="card mb-3">
+  <div class="card-body">
+    <p class="card-text">Mô tả: {{this.description}}.</p>
+    <p class="card-text">Loại hóa đơn: {{this.type}}.</p>
+    <p class="card-text">Giá tiền: {{this.price}}.</p>
+    <p class="card-text">Thời gian: {{this.time}}.</p>
+    <a href= "/host/invoiceDeleted/{{this.id}}?id={{../id}}&type={{../type}}" method = "post" class="btn btn-primary" name = "id" value = {{this.id}}>Xóa</a>
+  </div>
+</div>
+{{/each}}

@@ -3,6 +3,8 @@ const router = express.Router();
 const HostController = require('../app/controllers/HostController');
 
 router.post('/buildingAdded', HostController.afterAddedBuilding);
+router.post('/invoiceAdded', HostController.afterAddedInvoice);
+router.get('/invoiceDeleted/:id', HostController.afterDeletedInvoice);
 router.get('/buildingDeleted/:id', HostController.afterDeletedBuilding);
 router.post('/', HostController.postHost);
 router.post('/delete/:id', HostController.afterDeleteRoom);
@@ -12,6 +14,8 @@ router.get('/add', HostController.add);
 router.get('/edit', HostController.edit);
 router.get('/delete/building/:id', HostController.deleteRoom);
 router.get('/delete', HostController.delete);
+router.get('/invoice/add/:id', HostController.addInvoice);
+router.get('/invoice/:id', HostController.invoice);
 router.get('/', HostController.host);
 
 

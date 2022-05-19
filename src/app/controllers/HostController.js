@@ -89,7 +89,42 @@ class HostController {
             id: req.query.id,
             type: req.query.type
         });
-    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+    }
+    
+    async invoice(req, res) {
+        let data = await CRUDService.getRoomInvoice(req.params); 
+        let room = await CRUDService.findRoom(req.params);
+        return res.render('roomInvoice', {
+            roomID: room,
+            invoiceData: data,
+            id: req.query.id,
+            type: req.query.type
+        });
+    }
+    async addInvoice(req, res) {
+        let room = await CRUDService.findRoom(req.params);
+        return res.render('addInvoice', {
+            id: req.query.id,
+            invoiceData: room,
+            type: req.query.type
+        });
+    }
+    async afterAddedInvoice(req, res) {
+        let data = await CRUDService.afterAddedInvoice(req.body);
+        return res.render('host', {
+            roomsData: data,
+            id: req.query.id,
+            type: req.query.type
+        });
+    }
+    async afterDeletedInvoice(req, res) {
+        let data = await CRUDService.afterDeletedInvoice(req.params);
+        return res.render('host', {
+            roomsData: data,
+            id: req.query.id,
+            type: req.query.type
+        });
+    }  
 }
 
 module.exports = new HostController;
