@@ -7,7 +7,7 @@ DANH SÁCH THÀNH VIÊN:
 
 Sơ đồ quan hệ giữa các thực thể:
 
-![image](https://user-images.githubusercontent.com/88265142/169759870-55a476d9-7429-4a36-8d1e-5836e8eb9687.png)
+![image](https://user-images.githubusercontent.com/88265142/169760611-e0c008a3-5e64-4661-adf4-72ca601724d2.png)
 
 ![download](https://user-images.githubusercontent.com/88265142/167351558-82fe41dc-c32b-4606-92bb-e737b8bbac7c.png)
 
