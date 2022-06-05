@@ -14,7 +14,7 @@ class InvoiceController {
             type: QueryTypes.SELECT
            })
         res.render('invoice', {
-            invoice,
+            invoice : invoice[0],
             id: req.query.id,
             type: req.query.type
         });
