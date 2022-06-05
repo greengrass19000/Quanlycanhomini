@@ -8,7 +8,6 @@ const sequelize = new Sequelize('canhomini', 'root', null, {
 
 class RoomController {
     async show(req, res) {
-        console.log(req.params.id);
         let RoomView = await sequelize.query("SELECT * FROM ROOMS WHERE id = ?", {
             replacements: [req.params.id],
             type: QueryTypes.SELECT

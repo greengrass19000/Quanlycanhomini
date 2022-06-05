@@ -1,10 +1,9 @@
 <div class="card mb-3">
   <div class="card-body">
-    <h5 class="card-title">{{this.description}}</h5>
-    <p class="card-text">ID chủ hộ: {{hostid}}</p>
-    <p class="card-text">ID người ở: {{renterid}}.</p>
-    <p class="card-text">Tiền cọc{{this.deposit}}.</p>
-    <p class="card-text">Hạn từ ngày {{this.starttime}} đến ngày {{endtime}}.</p>
-    <p class="card-text">Mô tả: {{this.description}}.</p>
+    <p class="card-text">ID chủ hộ: {{contract.hostID}}.</p>
+    <p class="card-text">ID người ở: {{contract.renterID}}.</p>
+    <p class="card-text">Tiền cọc: {{contract.deposit}} VNĐ.</p>
+    <p class="card-text">Hạn từ ngày: {{contract.startTime}} đến ngày: {{contract.endTime}}.</p>
+    <p class="card-text">Mô tả: {{contract.description}}.</p>
   </div>
 </div>

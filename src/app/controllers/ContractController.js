@@ -8,13 +8,14 @@ const sequelize = new Sequelize('canhomini', 'root', null, {
 
 class ContractController {
     async show(req, res) {
-        console.log(req.params.id);
         let contract = await sequelize.query("SELECT * FROM contracts WHERE renterid = ?", {
             replacements: [req.query.id],
             type: QueryTypes.SELECT
            })
+        let c = contract[0];
+        console.log(c);
         res.render('contract', {
-            contract,
+            contract: c,
             id: req.query.id,
             type: req.query.type
         });
