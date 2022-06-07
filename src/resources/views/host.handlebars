@@ -28,7 +28,10 @@
           <p class="card-text">Tiện ích phòng: {{this.utilities}}</p>
           <p class="card-text">Trạng thái: {{this.state}}</p>
           <a href="room/detail/{{this.id}}?id={{../id}}&type={{../type}}" method = "post" action = "/room/detail/?id={{../id}}&type={{../type}}h" class="btn btn-primary" name = "id" value = {{this.id}}>Xem chi tiết</a>
+          {{#ifEquals this.state 'Đã thuê'}}
           <a href="/host/invoice/{{this.id}}?id={{../id}}&type={{../type}}" method = "post" action = "/host/invoice?id={{../id}}&type={{../type}}h" class="btn btn-primary" name = "id" value = {{this.id}}>Xem hóa đơn</a>
+          {{/ifEquals}}
+          
         </div>
       </div>
     </div>

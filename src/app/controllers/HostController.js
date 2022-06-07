@@ -44,11 +44,7 @@ class HostController {
     }
     async afterAddedBuilding(req, res) {
         let data = await CRUDService.afterAddedBuilding(req.body);   
-        return res.render('add', {
-            buildingData: data,
-            id: req.query.id,
-            type: req.query.type
-        });
+        res.redirect('http://localhost:3000/host' + '?id=' + req.query.id + '&type=' + req.query.type);
     }       
     async edit(req, res) {
         let data = await CRUDService.getHostRoom(req.query);   
@@ -75,20 +71,12 @@ class HostController {
         });
     }
     async afterDeleteRoom(req, res) {
-        let data = await CRUDService.afterDeleteRoom(req.params);    
-        return res.render('delete', {
-            buildingData: data,
-            id: req.query.id,
-            type: req.query.type
-        });
+        let data = await CRUDService.afterDeleteRoom(req.params);   
+        res.redirect('http://localhost:3000/host' + '?id=' + req.query.id + '&type=' + req.query.type);
     }
     async afterDeletedBuilding(req, res) {
         let data = await CRUDService.afterDeletedBuilding(req.params);
-        return res.render('delete', {
-            buildingData: data,
-            id: req.query.id,
-            type: req.query.type
-        });
+        res.redirect('http://localhost:3000/host' + '?id=' + req.query.id + '&type=' + req.query.type);
     }
     
     async invoice(req, res) {
@@ -111,20 +99,13 @@ class HostController {
     }
     async afterAddedInvoice(req, res) {
         let data = await CRUDService.afterAddedInvoice(req.body);
-        return res.render('host', {
-            roomsData: data,
-            id: req.query.id,
-            type: req.query.type
-        });
+        res.redirect('http://localhost:3000/host' + '?id=' + req.query.id + '&type=' + req.query.type);
     }
     async afterDeletedInvoice(req, res) {
         let data = await CRUDService.afterDeletedInvoice(req.params);
-        return res.render('host', {
-            roomsData: data,
-            id: req.query.id,
-            type: req.query.type
-        });
+        res.redirect('http://localhost:3000/host' + '?id=' + req.query.id + '&type=' + req.query.type);
     }  
+
 }
 
 module.exports = new HostController;
