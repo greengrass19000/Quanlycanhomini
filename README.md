@@ -1,4 +1,8 @@
 # Quản lý căn hộ mini
+LINK DEMO : http://40.82.202.59/home 
+Tài khoản host: TK:abc MK:abc12345 
+Tài khoản host: TK:xyz MK:xyz12345
+
 BÀI TẬP LỚN - MÔN CƠ SỞ DỮ LIỆU - INT2211_4
 DANH SÁCH THÀNH VIÊN:
 - Nguyễn Bá Nam Dũng 20020040
