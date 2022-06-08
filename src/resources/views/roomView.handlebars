@@ -20,7 +20,14 @@
     <form class="needs-validation" novalidate action = "/createcontract" method = "post">
     <input type="hidden" name="id" value={{this.id}} /> 
     <input type="hidden" name="type" value={{this.type}} /> 
-    <button class= "btn btn-primary btn" type="submit">Tạo hợp đồng</button>
+    <a href="/host/contract/add/{{this.id}}?id={{../id}}&type={{../type}}"><button type="button" class="btn btn-outline-primary" name = "id" value = {{this.id}}>Tạo hợp đồng</button></a>
+    </form>
+    {{/ifEquals}}
+    {{#ifEquals this.state 'Đã thuê'}}  
+    <form class="needs-validation" novalidate action = "/createcontract" method = "post">
+    <input type="hidden" name="id" value={{this.id}} /> 
+    <input type="hidden" name="type" value={{this.type}} /> 
+    <a href= "/host/contractDeleted/{{this.id}}?id={{../id}}&type={{../type}}" method = "post" class="btn btn-primary" name = "id" value = {{this.id}}>Xóa hợp đồng</a>
     </form>
     {{/ifEquals}}
   {{/ifEquals}}

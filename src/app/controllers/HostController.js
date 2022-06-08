@@ -104,8 +104,23 @@ class HostController {
     async afterDeletedInvoice(req, res) {
         let data = await CRUDService.afterDeletedInvoice(req.params);
         res.redirect('http://localhost:3000/host' + '?id=' + req.query.id + '&type=' + req.query.type);
+    }
+    async addContract(req, res) {
+        let room = await CRUDService.findRoom(req.params);
+        return res.render('makeContract', {
+            id: req.query.id,
+            contractData: room,
+            type: req.query.type
+        });
     }  
-
+    async afterAddedContract(req, res) {
+        let data = await CRUDService.afterAddedContract(req.body);
+        res.redirect('http://localhost:3000/host' + '?id=' + req.query.id + '&type=' + req.query.type);
+    }
+    async afterDeletedContract(req, res) {
+        let data = await CRUDService.afterDeletedContract(req.params);
+        res.redirect('http://localhost:3000/host' + '?id=' + req.query.id + '&type=' + req.query.type);
+    }
 }
 
 module.exports = new HostController;

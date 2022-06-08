@@ -1,3 +1,5 @@
+
+
 <form class = "mt-4">
   <div class="btn-group" role="group" aria-label="Basic outlined example">
     <a href="/host/add?id={{this.id}}&type={{this.type}}"><button type="button" class="btn btn-outline-primary">Thêm</button></a>
@@ -20,7 +22,7 @@
   <hr class="my-4">
   <div class = "row">
     {{#each roomsData}}
-    <div class="col-sm-6 col-lg-4">
+      <div class="col-sm-6 col-lg-4">
       <div class="card">
         <img src={{this.image}} class="card-img-top" alt="...">
         <div class="card-body">
@@ -31,7 +33,6 @@
           {{#ifEquals this.state 'Đã thuê'}}
           <a href="/host/invoice/{{this.id}}?id={{../id}}&type={{../type}}" method = "post" action = "/host/invoice?id={{../id}}&type={{../type}}h" class="btn btn-primary" name = "id" value = {{this.id}}>Xem hóa đơn</a>
           {{/ifEquals}}
-          
         </div>
       </div>
     </div>

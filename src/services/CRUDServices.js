@@ -394,6 +394,69 @@ let afterDeletedInvoice = (data) => {
         }
     })
 }
+
+let afterAddedContract = (data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await sequelize.query(
+                'INSERT INTO contracts(contracts.roomID, contracts.hostID, contracts.renterID, contracts.deposit, contracts.startTime, contracts.endTime, contracts.description) VALUES(?, ?, ?, ?, ?, ?, ?)',
+                {
+                    replacements: [data.roomID, data.hostID, data.renterID, data.deposit, data.startTime, data.endTime, data.description],
+                }
+            )
+            await sequelize.query (
+                'UPDATE rooms SET state = "Đã thuê" WHERE id = ?',
+                {
+                    replacements: [data.roomID],
+                }
+            )
+            let roomData = await sequelize.query(
+                'SELECT r.* FROM rooms r WHERE r.buildingID IN (SELECT b.id FROM buildings b WHERE b.hostID IN (SELECT b.hostID FROM buildings b WHERE b.id IN (SELECT r.buildingID FROM rooms r WHERE r.id = ?)))',
+                {
+                    replacements: [data.roomID],
+                    type: QueryTypes.SELECT
+                }
+            )
+            resolve(roomData); 
+        } catch(e) {
+            reject(e);
+        }
+    })
+}
+let afterDeletedContract = (data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let roomData = await sequelize.query(
+                'SELECT * FROM buildings b WHERE hostID IN (SELECT b.hostID FROM rooms r WHERE r.id = ?)',
+                {
+                    replacements: [data.id],
+                    type: QueryTypes.SELECT
+                }
+            );
+            await sequelize.query(
+                'DELETE FROM invoices WHERE roomID = ?',
+                {
+                    replacements: [data.id]
+                }
+            );
+            await sequelize.query (
+                'UPDATE rooms SET state = "Còn trống" WHERE id = ?',
+                {
+                    replacements: [data.id],
+                }
+            );
+            await sequelize.query(
+                'DELETE FROM contracts WHERE roomId = ?',
+                {
+                    replacements: [data.id]
+                }
+            )
+            resolve(roomData); 
+        } catch(e) {
+            reject(e);
+        }
+    })
+}
 module.exports = {
     createNewUser: createNewUser,
     getAllRoom: getAllRoom,
@@ -413,4 +476,6 @@ module.exports = {
     afterAddedInvoice: afterAddedInvoice,
     findRoom: findRoom,
     afterDeletedInvoice: afterDeletedInvoice,
+    afterAddedContract: afterAddedContract,
+    afterDeletedContract: afterDeletedContract,
 }
