@@ -16,13 +16,6 @@
     <p class="card-text">Trạng thái: {{this.state}}.</p>
   </div>
   {{#ifEquals ../type 'host'}}
-  {{#ifEquals this.state 'Đã thuê'}}
-    <form class="needs-validation" novalidate action = "/createinvoice" method = "post">
-    <input type="hidden" name="id" value={{this.id}} /> 
-    <input type="hidden" name="type" value={{this.type}} /> 
-    <button class= "btn btn-primary btn" type="submit">Tạo hóa đơn</button>
-    </form>
-    {{/ifEquals}}
     {{#ifEquals this.state 'Còn trống'}}  
     <form class="needs-validation" novalidate action = "/createcontract" method = "post">
     <input type="hidden" name="id" value={{this.id}} /> 
@@ -30,11 +23,6 @@
     <button class= "btn btn-primary btn" type="submit">Tạo hợp đồng</button>
     </form>
     {{/ifEquals}}
-    <form class="needs-validation" novalidate action = "/edit" method = "post">
-    <input type="hidden" name="id" value={{this.id}} /> 
-    <input type="hidden" name="type" value={{this.type}} /> 
-    <button class= "btn btn-primary btn" type="submit">Sửa phòng</button>
-    </form>
   {{/ifEquals}}
 </div>
 {{/each}}

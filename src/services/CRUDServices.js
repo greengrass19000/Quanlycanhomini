@@ -250,6 +250,18 @@ let afterDeleteRoom = (data) => {
                 }
             );
             await sequelize.query(
+                'DELETE FROM contracts WHERE roomID = ?',
+                {
+                    replacements: [data.id]
+                }
+            );
+            await sequelize.query(
+                'DELETE FROM invoices WHERE roomID = ?',
+                {
+                    replacements: [data.id]
+                }
+            );
+            await sequelize.query(
                 'DELETE FROM rooms WHERE id = ?',
                 {
                     replacements: [data.id]
@@ -273,7 +285,19 @@ let afterDeletedBuilding = (data) => {
                     replacements: [data.id, data.id],
                     type: QueryTypes.SELECT
                 }
-            )
+            );
+            await sequelize.query(
+                'DELETE FROM contracts WHERE roomID IN (SELECT roomID FROM rooms WHERE buildingID = ?)',
+                {
+                    replacements: [data.id]
+                }
+            );
+            await sequelize.query(
+                'DELETE FROM invoices WHERE roomID IN (SELECT roomID FROM rooms WHERE buildingID = ?)',
+                {
+                    replacements: [data.id]
+                }
+            );
             await sequelize.query(
                 'DELETE FROM rooms WHERE buildingID = ?',
                 {
